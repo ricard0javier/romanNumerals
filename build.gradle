@@ -1,0 +1,43 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+// allows the spring boot plugin to be used in the IDE
+buildscript {
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:1.3.2.RELEASE'
+    }
+
+}
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+
+    compile 'org.projectlombok:lombok:1.16.6'
+    compile 'ch.qos.logback:logback-classic:1.1.5'
+    compile 'org.springframework.boot:spring-boot-starter-web:1.3.2.RELEASE'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'info.cukes:cucumber-java:1.2.3'
+    testCompile 'info.cukes:cucumber-junit:1.2.3'
+    testCompile 'info.cukes:cucumber-spring:1.2.3'
+    testCompile 'org.springframework.boot:spring-boot-starter-test:1.3.2.RELEASE'
+
+//    "info.cukes:cucumber-jvm:1.1.8",
+//    "info.cukes:cucumber-core:1.1.8",
+//    "info.cukes:cucumber-java:1.1.8",
+//    "info.cukes:cucumber-junit:1.1.8",
+//    "info.cukes:cucumber-spring:1.1.8",
+
+}
