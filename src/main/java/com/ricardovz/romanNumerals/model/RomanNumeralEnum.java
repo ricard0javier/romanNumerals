@@ -1,8 +1,12 @@
-package com.ricardovz.test.model;
+package com.ricardovz.romanNumerals.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+/**
+ * Represents all the Roman Numeral values.
+ * The order in which they are defined is important. They might be defined in decedent mode
+ */
 @Getter
 @AllArgsConstructor
 public enum RomanNumeralEnum {

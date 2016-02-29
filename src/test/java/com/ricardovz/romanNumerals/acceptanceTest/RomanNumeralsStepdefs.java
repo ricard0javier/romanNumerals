@@ -1,5 +1,7 @@
-package com.ricardovz.test;
+package com.ricardovz.romanNumerals.acceptanceTest;
 
+import com.ricardovz.romanNumerals.Application;
+import com.ricardovz.romanNumerals.dto.RomanNumeralDTO;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -17,14 +19,14 @@ import org.springframework.web.client.RestTemplate;
 @WebIntegrationTest({"server.port=0", "management.port=0"})
 public class RomanNumeralsStepdefs {
 
-    public static final String URL = "http://localhost:{port}/convert/{input}";
+    public static final String URL = "http://localhost:{port}/convertToRomanNumeral/{input}";
 
     @Value("${local.server.port}")
     protected int serverPort;
 
     private int input;
 
-    private String result;
+    private RomanNumeralDTO result;
 
     private RestTemplate restTemplate;
 
@@ -42,14 +44,14 @@ public class RomanNumeralsStepdefs {
     @When("^the application converts the number$")
     public void the_application_converts_the_number() throws Throwable {
 
-        result = restTemplate.getForObject(URL, String.class, serverPort, input);
+        result = restTemplate.getForObject(URL, RomanNumeralDTO.class, serverPort, input);
 
     }
 
     @Then("^the application returns '(\\w+)'$")
     public void the_application_returns_I(String romanNumeral) throws Throwable {
 
-        Assert.assertEquals(romanNumeral, result);
+        Assert.assertEquals(romanNumeral, result.getRomanNumeral());
 
     }
 }
